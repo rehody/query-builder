@@ -1,5 +1,6 @@
 package parser
 
+import insert.statement.InsertStatement
 import select.node.SelectExpressionNode
 import select.statement.SelectStatement
 import util.QueryFormatter
@@ -8,7 +9,6 @@ import util.SqlKeyword
 object StatementParser {
     fun getParsedSelect(statement: SelectStatement): String {
         val clauses = ArrayList<String>()
-
         clauses += ClauseParser.getParsedSelect(statement.selectClause!!)
 
         if (statement.selectClause is SelectExpressionNode) {
@@ -16,7 +16,7 @@ object StatementParser {
         }
 
         clauses += SqlKeyword.FROM + " " +
-                QueryFormatter.getEscapedIdentifier(statement.fromClause!!.table)
+                QueryFormatter.getEscapedIdentifier(statement.tableClause!!.table)
 
         if (statement.whereClause != null) {
             clauses += ClauseParser.getParsedWhere(statement.whereClause!!)
@@ -33,4 +33,15 @@ object StatementParser {
 
         return clauses.joinToString(" ")
     }
+
+    fun getParsedInsert(statement: InsertStatement): String {
+        val clauses = ArrayList<String>()
+        clauses += SqlKeyword.INSERT_INTO + " " +
+                QueryFormatter.getEscapedIdentifier(statement.tableClause!!.table)
+
+        clauses += ClauseParser.getParsedValues(statement.valueClause!!)
+
+        return clauses.joinToString(" ")
+    }
+
 }

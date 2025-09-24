@@ -6,6 +6,7 @@ import condition.node.BetweenNode
 import condition.node.BinaryLogicalNode
 import condition.node.ComparisonNode
 import condition.node.ConditionNode
+import insert.node.ValueNode
 import select.node.ExistsNode
 import select.node.NumberColumnNode
 import select.node.SelectColumnNode
@@ -132,5 +133,22 @@ object ClauseParser {
 
     private fun throwUnexpectedNode(node: Node): Nothing {
         throw IllegalStateException("Unexpected node: " + node::class.simpleName)
+    }
+
+    fun getParsedValues(values: List<ValueNode>): String {
+        val query = StringBuilder()
+        val cols = values.map { QueryFormatter.getEscapedIdentifier(it.column) }
+        val vals = values.map { QueryFormatter.getEscapedParameter(it.value) }
+
+        query
+            .append("(")
+            .append(cols.joinToString(", "))
+            .append(") ")
+            .append(SqlKeyword.VALUES)
+            .append(" (")
+            .append(vals.joinToString(", "))
+            .append(")")
+
+        return query.toString();
     }
 }

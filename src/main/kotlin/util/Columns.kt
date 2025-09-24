@@ -2,6 +2,7 @@ package util
 
 import common.node.OrderColumnNode
 import common.step.BuildStep
+import insert.node.ValueNode
 import select.builder.SelectBuilder
 import select.node.NumberColumnNode
 import select.node.SelectColumn
@@ -21,6 +22,10 @@ object Columns {
 
     fun col(name: String, direction: OrderDirection): OrderColumnNode {
         return OrderColumnNode(name, direction)
+    }
+
+    fun col(column: String, value: Any?): ValueNode {
+        return ValueNode(column, value)
     }
 
     fun sub(query: SelectStep.() -> BuildStep, alias: String? = null): SubSelectColumnNode {

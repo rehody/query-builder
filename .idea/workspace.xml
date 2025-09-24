@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41daf17d-b2fe-4c78-a70e-460ca8f28f08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/common/node/TableNode.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/insert/builder/InsertBuilder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/insert/node/ValueNode.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/insert/statement/InsertStatement.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/insert/step/InsertStep.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/insert/step/ValueStep.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/InsertBuilderTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/parser/ClauseParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/parser/ClauseParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/parser/StatementParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/parser/StatementParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/select/builder/SelectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/select/builder/SelectBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/select/node/FromNode.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/select/statement/SelectStatement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/select/statement/SelectStatement.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/Columns.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/Columns.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +59,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Enum" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -103,7 +116,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "feat/insert-builder",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/michael/IdeaProjects/QueryBuilder",
     "node.js.detected.package.eslint": "true",
@@ -125,6 +138,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="common.node" />
+    </key>
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
       <recent name="common.node" />
     </key>
   </component>
@@ -287,7 +303,7 @@
       <workItem from="1758601338643" duration="497000" />
       <workItem from="1758732623261" duration="5533000" />
       <workItem from="1758738395099" duration="682000" />
-      <workItem from="1758739090278" duration="14000" />
+      <workItem from="1758739090278" duration="1813000" />
     </task>
     <servers />
   </component>

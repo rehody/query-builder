@@ -3,12 +3,12 @@ package select.builder
 import common.node.LimitNode
 import common.node.OrderColumnNode
 import common.node.OrderNode
+import common.node.TableNode
 import common.step.BuildStep
 import condition.builder.ConditionBuilder
 import condition.step.ColumnStep
 import condition.step.LogicalStep
 import parser.StatementParser
-import select.node.FromNode
 import select.node.SelectColumn
 import select.node.SelectColumnNode
 import select.node.SelectExpressionNode
@@ -50,7 +50,7 @@ class SelectBuilder internal constructor() :
     }
 
     override fun from(table: String): SelectWhereStep<OrderStep> {
-        statement.fromClause = FromNode(table)
+        statement.tableClause = TableNode(table)
         return this
     }
 
