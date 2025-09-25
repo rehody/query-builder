@@ -9,7 +9,7 @@ import insert.step.ValueStep
 import parser.StatementParser
 
 class InsertBuilder internal constructor() :
-    InsertStep, ValueStep {
+    InsertStep, ValueStep, BuildStep {
     val statement = InsertStatement()
 
     companion object {
