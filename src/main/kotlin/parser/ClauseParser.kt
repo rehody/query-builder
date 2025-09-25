@@ -135,7 +135,7 @@ object ClauseParser {
         throw IllegalStateException("Unexpected node: " + node::class.simpleName)
     }
 
-    fun getParsedValues(values: List<ValueNode>): String {
+    fun getParsedInsertValues(values: List<ValueNode>): String {
         val query = StringBuilder()
         val cols = values.map { QueryFormatter.getEscapedIdentifier(it.column) }
         val vals = values.map { QueryFormatter.getEscapedParameter(it.value) }
@@ -150,5 +150,25 @@ object ClauseParser {
             .append(")")
 
         return query.toString();
+    }
+
+    fun getParsedUpdateValues(values: List<ValueNode>): String {
+        val query = StringBuilder()
+        val cols = values.map { QueryFormatter.getEscapedIdentifier(it.column) }
+        val vals = values.map { QueryFormatter.getEscapedParameter(it.value) }
+
+        if (cols.size != vals.size) {
+            throw IllegalStateException("Number of columns and values must match")
+        }
+
+        for ((c, v) in cols.zip(vals)) {
+            query
+                .append(c)
+                .append(" = ")
+                .append(v)
+                .append(", ")
+        }
+
+        return query.toString().removeSuffix(", ").trim()
     }
 }

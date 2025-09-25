@@ -9,16 +9,16 @@ import insert.step.ValueStep
 import parser.StatementParser
 
 class InsertBuilder internal constructor() :
-    InsertStep, ValueStep, BuildStep {
+    InsertStep, ValueStep<BuildStep>, BuildStep {
     val statement = InsertStatement()
 
     companion object {
-        fun insertInto(table: String): ValueStep {
+        fun insertInto(table: String): ValueStep<BuildStep> {
             return InsertBuilder().insertInto(table)
         }
     }
 
-    override fun insertInto(table: String): ValueStep {
+    override fun insertInto(table: String): ValueStep<BuildStep> {
         statement.tableClause = TableNode(table)
         return this
     }

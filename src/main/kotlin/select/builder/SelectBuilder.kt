@@ -22,7 +22,7 @@ import select.step.SelectWhereStep
 
 class SelectBuilder internal constructor() :
     SelectStep, FromStep,
-    SelectWhereStep<OrderStep>,
+    SelectWhereStep,
     OrderStep, LimitStep, BuildStep {
     val statement = SelectStatement()
 
@@ -49,7 +49,7 @@ class SelectBuilder internal constructor() :
         return this
     }
 
-    override fun from(table: String): SelectWhereStep<OrderStep> {
+    override fun from(table: String): SelectWhereStep {
         statement.tableClause = TableNode(table)
         return this
     }
@@ -57,7 +57,6 @@ class SelectBuilder internal constructor() :
     override fun where(block: ColumnStep.() -> LogicalStep): OrderStep {
         val builder = ConditionBuilder(null)
         builder.block()
-
         statement.whereClause = builder.root
         return this
     }
