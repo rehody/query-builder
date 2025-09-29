@@ -2,6 +2,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import update.builder.UpdateBuilder
 import util.Columns.col
+import util.Raw
 
 class UpdateBuilderTest {
 
@@ -35,6 +36,20 @@ class UpdateBuilderTest {
                 col("f1").eq(1337)
                     .or("f2").between(100, 500)
             }
+            .build()
+
+        assertThat(query).isEqualTo(expected)
+    }
+
+    @Test
+    fun shouldBuildWithRawValueString() {
+        val expected = """UPDATE "table" SET "version" = version + 1"""
+
+        val query = UpdateBuilder
+            .update("table")
+            .values(
+                col("version", Raw("version + 1")),
+            )
             .build()
 
         assertThat(query).isEqualTo(expected)
