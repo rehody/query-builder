@@ -5,6 +5,7 @@ import util.Columns.col
 import util.Columns.sub
 import util.OrderDirection.ASC
 import util.OrderDirection.DESC
+import java.time.LocalDateTime
 
 class SelectBuilderTest {
 
@@ -123,6 +124,22 @@ class SelectBuilderTest {
                 )
             )
             .from("table")
+            .build()
+
+        assertThat(query).isEqualTo(expected)
+    }
+
+    @Test
+    fun shouldParseDateCorrectly() {
+        val date = LocalDateTime.of(2025, 9, 29, 15, 57)
+        val expected = """SELECT * FROM "table" WHERE "date" = '2025-09-29 15:57:00'"""
+
+        val query = SelectBuilder
+            .select()
+            .from("table")
+            .where {
+                col("date").eq(date)
+            }
             .build()
 
         assertThat(query).isEqualTo(expected)
