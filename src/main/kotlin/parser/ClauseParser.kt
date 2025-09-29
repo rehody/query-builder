@@ -15,7 +15,6 @@ import select.node.SelectNode
 import select.node.SubSelectColumnNode
 import select.node.TableColumnNode
 import util.QueryFormatter
-import util.Raw
 import util.SqlKeyword
 
 object ClauseParser {
@@ -156,10 +155,7 @@ object ClauseParser {
     fun getParsedUpdateValues(values: List<ValueNode>): String {
         val query = StringBuilder()
         val cols = values.map { QueryFormatter.getEscapedIdentifier(it.column) }
-        val vals = values.map {
-            if (it.value is Raw) it.value.value
-            else QueryFormatter.getEscapedParameter(it.value)
-        }
+        val vals = values.map { QueryFormatter.getEscapedParameter(it.value) }
 
         if (cols.size != vals.size) {
             throw IllegalStateException("Number of columns and values must match")
