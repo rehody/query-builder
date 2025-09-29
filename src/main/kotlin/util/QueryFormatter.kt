@@ -22,6 +22,10 @@ object QueryFormatter {
             return "'" + param.format(formatter) + "'"
         }
 
+        if (param is Raw) {
+            return param.value
+        }
+
 
         return "'" + param.toString().replace("'", "''") + "'"
     }
